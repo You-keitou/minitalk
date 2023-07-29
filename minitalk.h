@@ -6,7 +6,7 @@
 /*   By: jinyang <jinyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 18:04:35 by jinyang           #+#    #+#             */
-/*   Updated: 2023/07/29 18:08:24 by jinyang          ###   ########.fr       */
+/*   Updated: 2023/07/29 20:00:56 by jinyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>	// write(), usleep()
 # include <limits.h>	// INT_MAX, INT_MIN
 
-int ft_printf(const char *format, ...);
-int ft_atoi(const char *nptr);
+int	ft_printf(const char *format, ...);
+int	ft_atoi(const char *nptr);
 
 #endif

@@ -13,41 +13,41 @@
 #include "libftprintf.h"
 #include "libft.h"
 
-static void	phase_arg(va_list arg, const char *fmt, t_buffer *Buffer)
+static void	phase_arg(va_list arg, const char *fmt, s_buffer *buffer)
 {
 	if (*fmt == 'c')
-		ft_putchar(Buffer, va_arg(arg, int));
+		ft_putchar(buffer, va_arg(arg, int));
 	else if (*fmt == 's')
-		ft_putstr(Buffer, va_arg(arg, char *));
+		ft_putstr(buffer, va_arg(arg, char *));
 	else if (*fmt == 'p')
 	{
-		ft_putstr(Buffer, "0x");
-		convert_p(va_arg(arg, uintptr_t), "0123456789abcdef", Buffer);
+		ft_putstr(buffer, "0x");
+		convert_p(va_arg(arg, uintptr_t), "0123456789abcdef", buffer);
 	}
 	else if (*fmt == 'd' || *fmt == 'i')
-		itoa_ten(va_arg(arg, int), Buffer);
+		itoa_ten(va_arg(arg, int), buffer);
 	else if (*fmt == 'u')
-		itoa_unsigned(va_arg(arg, int), Buffer);
+		itoa_unsigned(va_arg(arg, int), buffer);
 	else if (*fmt == 'x')
-		itoa_x(va_arg(arg, int), "0123456789abcdef", Buffer);
+		itoa_x(va_arg(arg, int), "0123456789abcdef", buffer);
 	else if (*fmt == 'X')
-		itoa_x(va_arg(arg, int), "0123456789ABCDEF", Buffer);
+		itoa_x(va_arg(arg, int), "0123456789ABCDEF", buffer);
 	else if (*fmt == '%')
-		ft_putchar(Buffer, '%');
+		ft_putchar(buffer, '%');
 }
 
-void	ft_vsnprintf(const char *fmt, va_list args, t_buffer *Buffer)
+void	ft_vsnprintf(const char *fmt, va_list args, s_buffer *buffer)
 {
 	while (*fmt != 0)
 	{
 		if (*fmt != '%')
 		{
-			ft_putchar(Buffer, *fmt);
+			ft_putchar(buffer, *fmt);
 			fmt ++;
 		}
 		else
 		{
-			phase_arg(args, fmt + 1, Buffer);
+			phase_arg(args, fmt + 1, buffer);
 			fmt += 2;
 		}
 	}
@@ -56,13 +56,13 @@ void	ft_vsnprintf(const char *fmt, va_list args, t_buffer *Buffer)
 int	ft_printf(const char *fmt, ...)
 {
 	va_list		args;
-	t_buffer	Buffer;
+	s_buffer	buffer;
 
-	Buffer.len = 0;
-	Buffer.ret = 0;
+	buffer.len = 0;
+	buffer.ret = 0;
 	va_start(args, fmt);
-	ft_vsnprintf(fmt, args, &Buffer);
-	ft_fflush(&Buffer);
+	ft_vsnprintf(fmt, args, &buffer);
+	ft_fflush(&buffer);
 	va_end(args);
-	return (Buffer.ret);
+	return (buffer.ret);
 }

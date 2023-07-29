@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_out_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinyang   < jinyang@student.42tokyo.>      +#+  +:+       +#+        */
+/*   By: jinyang <jinyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 01:13:47 by jinyang           #+#    #+#             */
-/*   Updated: 2022/07/24 01:16:17 by jinyang          ###   ########.fr       */
+/*   Updated: 2023/07/29 20:04:41 by jinyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_fflush(t_buffer *Buffer)
+void	ft_fflush(s_buffer *Buffer)
 {
 	write(1, Buffer->buffer, Buffer->len);
 	Buffer->ret += Buffer->len;
 }
 
-void	ft_putchar(t_buffer *Buffer, char c)
+void	ft_putchar(s_buffer *Buffer, char c)
 {
 	if (Buffer->len + 1 <= BUFFERSIZE)
 	{
@@ -33,10 +33,12 @@ void	ft_putchar(t_buffer *Buffer, char c)
 	}
 }
 
-void	ft_putstr(t_buffer *Buffer, char *str)
+void	ft_putstr(s_buffer *Buffer, char *str)
 {
-	if (str == NULL) ft_putstr(Buffer, "(null)");
-	else{
+	if (str == NULL)
+		ft_putstr(Buffer, "(null)");
+	else
+	{
 		while (*str != 0)
 		{
 			ft_putchar(Buffer, *str);
