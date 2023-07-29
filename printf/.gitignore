@@ -1,0 +1,8 @@
+.vscode
+*.dSYM
+core
+pft/
+pft_2019/
+ft_printf_tester
+main.c
+test.c
