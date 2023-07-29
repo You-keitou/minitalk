@@ -6,7 +6,7 @@
 /*   By: jinyang <jinyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 20:02:53 by jinyang           #+#    #+#             */
-/*   Updated: 2023/07/29 20:04:33 by jinyang          ###   ########.fr       */
+/*   Updated: 2023/07/29 20:39:23 by jinyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_abs(int num)
 		return (num);
 }
 
-void	itoa_ten(int num, s_buffer *Buffer)
+void	itoa_ten(int num, t_buffer *Buffer)
 {
 	static char	*base = "0123456789";
 	char		temp[sizeof(int) * 8];
@@ -47,7 +47,7 @@ void	itoa_ten(int num, s_buffer *Buffer)
 		ft_putchar(Buffer, temp[temp_index]);
 }
 
-void	itoa_unsigned(int num, s_buffer *Buffer)
+void	itoa_unsigned(int num, t_buffer *Buffer)
 {
 	static char		*base = "0123456789";
 	char			temp[sizeof(int) * 8];
@@ -69,7 +69,7 @@ void	itoa_unsigned(int num, s_buffer *Buffer)
 		ft_putchar(Buffer, temp[temp_index]);
 }
 
-void	itoa_x(unsigned int num, char *base, s_buffer *Buffer)
+void	itoa_x(unsigned int num, char *base, t_buffer *Buffer)
 {
 	char			temp[sizeof(int) * 8];
 	int				temp_index;
@@ -90,7 +90,7 @@ void	itoa_x(unsigned int num, char *base, s_buffer *Buffer)
 		ft_putchar(Buffer, temp[temp_index]);
 }
 
-void	convert_p(uintptr_t num, char *base, s_buffer *Buffer)
+void	convert_p(uintptr_t num, char *base, t_buffer *Buffer)
 {
 	char			temp[sizeof(int) * 8];
 	int				temp_index;

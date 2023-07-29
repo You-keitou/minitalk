@@ -13,7 +13,7 @@
 #include "libftprintf.h"
 #include "libft.h"
 
-static void	phase_arg(va_list arg, const char *fmt, s_buffer *buffer)
+static void	phase_arg(va_list arg, const char *fmt, t_buffer *buffer)
 {
 	if (*fmt == 'c')
 		ft_putchar(buffer, va_arg(arg, int));
@@ -36,7 +36,7 @@ static void	phase_arg(va_list arg, const char *fmt, s_buffer *buffer)
 		ft_putchar(buffer, '%');
 }
 
-void	ft_vsnprintf(const char *fmt, va_list args, s_buffer *buffer)
+void	ft_vsnprintf(const char *fmt, va_list args, t_buffer *buffer)
 {
 	while (*fmt != 0)
 	{
@@ -56,7 +56,7 @@ void	ft_vsnprintf(const char *fmt, va_list args, s_buffer *buffer)
 int	ft_printf(const char *fmt, ...)
 {
 	va_list		args;
-	s_buffer	buffer;
+	t_buffer	buffer;
 
 	buffer.len = 0;
 	buffer.ret = 0;
